@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Predictor — India </title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b0f17;
+      color: #e6edf3;
+    }
+    .hidden { display: none; }
+    .channel-card {
+      border: 1px solid #2b3445;
+      padding: 12px;
+      margin: 8px 0;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+    .channel-card.active {
+      border-color: #00e5ff;
+      background: #122033;
+    }
+    #system-console {
+      background: #05070b;
+      border: 1px solid #222b3a;
+      padding: 10px;
+      height: 140px;
+      overflow-y: auto;
+      font-family: monospace;
+      font-size: 13px;
+    }
+    #toast-container {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .win-toast {
+      background: #131b29;
+      border-left: 4px solid #00e5ff;
+      padding: 10px 14px;
+      border-radius: 6px;
+      transition: opacity 0.35s ease;
+    }
+    .win-toast.fade-out { opacity: 0; }
+  </style>
+</head>
+<body>
+  <div id="server-loader">
+    <div>LOADING SERVER — <span id="loader-percent">0%</span></div>
+    <div id="loader-bar" style="height:6px;width:0%;background:#00e5ff;"></div>
+    <div id="loader-status">Connecting to Mumbai central server...</div>
+  </div>
+
+  <header>
+    <div>Free access timer: <span id="free-access-timer">05:00</span></div>
+    <h1>AI PREDICTOR</h1>
+    <p>// INDIAN HACK SYSTEM ACTIVE //</p>
+    <div>Server ping: 42ms | <span id="active-viewers">434 users reading signals</span></div>
+  </header>
+
+  <main>
+    <section>
+      <h2>// SELECT SIGNAL CHANNEL //</h2>
+      <div class="channel-card active" data-channel="VIP Sports" data-confidence="99.8%">
+        VIP Sports — AI Accuracy: 99.8%
+      </div>
+      <div class="channel-card" data-channel="Aviator Hack" data-confidence="94.2%">
+        Aviator Hack — Success Rate: 94.2%
+      </div>
+      <div class="channel-card" data-channel="Mines Hack" data-confidence="97.0%">
+        Mines Hack — Safe Zone: 97.0%
+      </div>
+      <div class="channel-card" data-channel="Penalty Shoot" data-confidence="89.5%">
+        Penalty Shoot — Goal Index: 89.5%
+      </div>
+    </section>
+
+    <section>
+      <h3>SYSTEM CONSOLE // CENTRAL_CORE_MUMBAI — CONNECTED</h3>
+      <div id="system-console"></div>
+    </section>
+
+    <section>
+      <h3>DEPOSIT REQUIRED — UNLOCK ACCESS BY FOLLOWING STEPS</h3>
+      <div>Time remaining: <span id="unlock-timer">04:59</span></div>
+      <ol>
+        <li><strong>Register an official account</strong> — Only an account registered via the link below will connect to the system.</li>
+        <li><strong>Deposit at least 200rs</strong> — A new deposit is required to sync with the system's algorithm.</li>
+        <li><strong>Activate the predictor</strong> — Contact the admin, send your 1xbet ID, and get an activation code.</li>
+      </ol>
+      <div>
+        <a href="https://refpa83698.com/L?tag=d_6308551m_2895c_&site=6308551&ad=2895&r=registration" target="_blank" rel="noopener">1. REGISTER / ACCESS EXAMPLE</a> |
+        <a href="https://t.me/RajeshKumar_officiaI_bot" target="_blank" rel="noopener">2. CONTACT THE BOT</a> |
+        <a href="https://t.me/+HiZ14tyyhxo2NmVi" target="_blank" rel="noopener">JOIN CHANNEL</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>System version: v3.4.1 (India Stable)</div>
+    <div>All data protected with RSA-2048 encryption</div>
+    <div>For educational purposes only. Please use responsibly.</div>
+  </footer>
+
+  <div id="toast-container"></div>
+
+  <script>
+    function startServerLoader(durationMs = 2500, onComplete = null) {
+      const percentEl = document.getElementById("loader-percent");
+      const barEl = document.getElementById("loader-bar");
+      const statusEl = document.getElementById("loader-status");
+      const overlayEl = document.getElementById("server-loader");
+      const startTime = performance.now();
+
+      function tick(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(100, Math.round((elapsed / durationMs) * 100));
+
+        if (percentEl) percentEl.textContent = `${progress}%`;
+        if (barEl) barEl.style.width = `${progress}%`;
+
+        if (statusEl) {
+          if (progress < 40) statusEl.textContent = "Connecting to Mumbai central server...";
+          else if (progress < 80) statusEl.textContent = "Synchronizing live signal node...";
+          else statusEl.textContent = "Decrypting feed stream...";
+        }
+
+        if (progress < 100) {
+          requestAnimationFrame(tick);
+        } else {
+          setTimeout(() => {
+            if (overlayEl) overlayEl.classList.add("hidden");
+            if (typeof onComplete === "function") onComplete();
+          }, 250);
+        }
+      }
+      requestAnimationFrame(tick);
+    }
+
+    function createCountdownTimer(elementId, totalSeconds, onExpire = null) {
+      let remaining = totalSeconds;
+      const el = document.getElementById(elementId);
+
+      function formatTime(sec) {
+        const mins = Math.floor(sec / 60);
+        const secs = sec % 60;
+        return `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+      }
+
+      if (el) el.textContent = formatTime(remaining);
+
+      const intervalId = setInterval(() => {
+        remaining -= 1;
+        if (remaining <= 0) {
+          remaining = 0;
+          if (el) el.textContent = formatTime(remaining);
+          clearInterval(intervalId);
+          if (typeof onExpire === "function") onExpire();
+          return;
+        }
+        if (el) el.textContent = formatTime(remaining);
+      }, 1000);
+
+      return () => clearInterval(intervalId);
+    }
+
+    const MOCK_USERS = ["Bat_Erdene99", "Temuulen_MN", "Ganzo_X", "Nomin_UB", "Tsolmon_77", "Sukhbat_MN"];
+    const MOCK_GAMES = ["Aviator", "Mines", "Penalty Shoot", "VIP Sports"];
+
+    function randomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function formatMNT(amount) {
+      return `₮ ${amount.toLocaleString("en-US")}`;
+    }
+
+    function showLiveWinToast(containerId = "toast-container") {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+
+      const user = MOCK_USERS[randomInt(0, MOCK_USERS.length - 1)];
+      const game = MOCK_GAMES[randomInt(0, MOCK_GAMES.length - 1)];
+      const payout = randomInt(250, 2500) * 1000;
+
+      const toast = document.createElement("div");
+      toast.className = "win-toast";
+      toast.innerHTML = `
+        <div><strong>Live Earnings Recorded</strong></div>
+        <div>${user} won ${formatMNT(payout)} on ${game}</div>
+      `;
+
+      container.appendChild(toast);
+
+      setTimeout(() => {
+        toast.classList.add("fade-out");
+        setTimeout(() => toast.remove(), 350);
+      }, 4200);
+    }
+
+    function startLiveWinsFeed(intervalMs = 6500) {
+      showLiveWinToast();
+      return setInterval(() => showLiveWinToast(), intervalMs);
+    }
+
+    function appendConsoleLog(message, tag = "INFO") {
+      const consoleEl = document.getElementById("system-console");
+      if (!consoleEl) return;
+
+      const now = new Date().toTimeString().split(" ")[0];
+      const line = document.createElement("div");
+      line.textContent = `[${now}] [${tag}] ${message}`;
+      consoleEl.appendChild(line);
+      consoleEl.scrollTop = consoleEl.scrollHeight;
+    }
+
+    function initSignalChannels() {
+      const cards = document.querySelectorAll("[data-channel]");
+      const viewersEl = document.getElementById("active-viewers");
+
+      cards.forEach((card) => {
+        card.addEventListener("click", () => {
+          cards.forEach((c) => c.classList.remove("active"));
+          card.classList.add("active");
+
+          const channelName = card.dataset.channel || "Signal Channel";
+          const confidence = card.dataset.confidence || "95.0%";
+
+          if (viewersEl) {
+            viewersEl.textContent = `${randomInt(320, 540)} users reading signals`;
+          }
+
+          appendConsoleLog(`Switched stream to "${channelName}" (Accuracy/Index: ${confidence})`, "STREAM");
+        });
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      initSignalChannels();
+      startServerLoader(2200, () => {
+        appendConsoleLog("Connected to CENTRAL_CORE_MUMBAI (42ms)", "NET");
+        appendConsoleLog("RSA-2048 channel handshake verified", "SEC");
+        startLiveWinsFeed(7000);
+      });
+      createCountdownTimer("free-access-timer", 300, () => {
+        appendConsoleLog("Free access session window expired", "WARN");
+      });
+      createCountdownTimer("unlock-timer", 299);
+    });
+  </script>
+</body>
+</html>
