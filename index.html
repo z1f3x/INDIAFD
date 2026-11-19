@@ -1,258 +1,338 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="mn">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Predictor — India </title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0b0f17;
-      color: #e6edf3;
-    }
-    .hidden { display: none; }
-    .channel-card {
-      border: 1px solid #2b3445;
-      padding: 12px;
-      margin: 8px 0;
-      cursor: pointer;
-      border-radius: 8px;
-    }
-    .channel-card.active {
-      border-color: #00e5ff;
-      background: #122033;
-    }
-    #system-console {
-      background: #05070b;
-      border: 1px solid #222b3a;
-      padding: 10px;
-      height: 140px;
-      overflow-y: auto;
-      font-family: monospace;
-      font-size: 13px;
-    }
-    #toast-container {
-      position: fixed;
-      right: 16px;
-      bottom: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .win-toast {
-      background: #131b29;
-      border-left: 4px solid #00e5ff;
-      padding: 10px 14px;
-      border-radius: 6px;
-      transition: opacity 0.35s ease;
-    }
-    .win-toast.fade-out { opacity: 0; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI PREDICTOR // India</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div id="server-loader">
-    <div>LOADING SERVER — <span id="loader-percent">0%</span></div>
-    <div id="loader-bar" style="height:6px;width:0%;background:#00e5ff;"></div>
-    <div id="loader-status">Connecting to Mumbai central server...</div>
-  </div>
 
-  <header>
-    <div>Free access timer: <span id="free-access-timer">05:00</span></div>
-    <h1>AI PREDICTOR</h1>
-    <p>// INDIAN HACK SYSTEM ACTIVE //</p>
-    <div>Server ping: 42ms | <span id="active-viewers">434 users reading signals</span></div>
-  </header>
+    <!-- Всплывающее уведомление о выигрыше -->
+    <div id="payout-ticker" class="payout-ticker-box">
+        <div class="ticker-icon">⚡</div>
+        <div class="ticker-content">
+            <span class="ticker-title">Direct income has been recorded.</span>
+            <span id="ticker-text">Bat_Erdene99 Won 120,000rs on Aviator</span>
+        </div>
+    </div>
 
-  <main>
-    <section>
-      <h2>// SELECT SIGNAL CHANNEL //</h2>
-      <div class="channel-card active" data-channel="VIP Sports" data-confidence="99.8%">
-        VIP Sports — AI Accuracy: 99.8%
-      </div>
-      <div class="channel-card" data-channel="Aviator Hack" data-confidence="94.2%">
-        Aviator Hack — Success Rate: 94.2%
-      </div>
-      <div class="channel-card" data-channel="Mines Hack" data-confidence="97.0%">
-        Mines Hack — Safe Zone: 97.0%
-      </div>
-      <div class="channel-card" data-channel="Penalty Shoot" data-confidence="89.5%">
-        Penalty Shoot — Goal Index: 89.5%
-      </div>
-    </section>
+    <!-- Загрузочный экран / Сканирование -->
+    <div id="scanning-screen" class="loader-overlay">
+        <div class="loader-box">
+            <div class="spinner"></div>
+            <div class="loader-status">
+                <span>READING FROM SERVER</span>
+                <span id="scan-percent">0%</span>
+            </div>
+            <div id="progress-bar" class="progress-fill"></div>
+        </div>
+        <div class="loader-sub">Connecting to the central server in Mumbai...</div>
+    </div>
 
-    <section>
-      <h3>SYSTEM CONSOLE // CENTRAL_CORE_MUMBAI — CONNECTED</h3>
-      <div id="system-console"></div>
-    </section>
+    <!-- Плавающая кнопка Telegram -->
+    <a href="https://t.me/+mVD71yfvh45lZjcy" target="_blank" class="tg-float">
+        <i class="tg-icon">✈️</i>
+    </a>
 
-    <section>
-      <h3>DEPOSIT REQUIRED — UNLOCK ACCESS BY FOLLOWING STEPS</h3>
-      <div>Time remaining: <span id="unlock-timer">04:59</span></div>
-      <ol>
-        <li><strong>Register an official account</strong> — Only an account registered via the link below will connect to the system.</li>
-        <li><strong>Deposit at least 200rs</strong> — A new deposit is required to sync with the system's algorithm.</li>
-        <li><strong>Activate the predictor</strong> — Contact the admin, send your 1xbet ID, and get an activation code.</li>
-      </ol>
-      <div>
-        <a href="https://refpa83698.com/L?tag=d_6308551m_2895c_&site=6308551&ad=2895&r=registration" target="_blank" rel="noopener">1. REGISTER / ACCESS EXAMPLE</a> |
-        <a href="https://t.me/RajeshKumar_officiaI_bot" target="_blank" rel="noopener">2. CONTACT THE BOT</a> |
-        <a href="https://t.me/+HiZ14tyyhxo2NmVi" target="_blank" rel="noopener">JOIN CHANNEL</a>
-      </div>
-    </section>
-  </main>
+    <!-- Шапка сайта -->
+    <div class="main-wrapper">
+        <header>
+            <div class="free-access">
+                Free access period: <span id="timer">05:00</span>
+            </div>
+            <h1>
+                <span>AI PREDICTOR</span>
+            </h1>
+            <p>// INDIA HACK SYSTEM IS ACTIVE //</p>
+            
+            <div class="header-badges">
+                <span>SSL PROTECTION</span>
+                <span>QUICK NEWS</span>
+                <span>12K+ USERS</span>
+            </div>
+        </header>
 
-  <footer>
-    <div>System version: v3.4.1 (India Stable)</div>
-    <div>All data protected with RSA-2048 encryption</div>
-    <div>For educational purposes only. Please use responsibly.</div>
-  </footer>
+        <!-- Основной блок -->
+        <main>
+            <div class="server-status">
+                <div>СSPEED OF A BUTTERFLY: 42ms</div>
+            </div>
 
-  <div id="toast-container"></div>
+            <div class="payouts-header">
+                <h3>
+                    // RECENT WINS //
+                    <span class="live-tag">IMMEDIATELY</span>
+                </h3>
+            </div>
 
-  <script>
-    function startServerLoader(durationMs = 2500, onComplete = null) {
-      const percentEl = document.getElementById("loader-percent");
-      const barEl = document.getElementById("loader-bar");
-      const statusEl = document.getElementById("loader-status");
-      const overlayEl = document.getElementById("server-loader");
-      const startTime = performance.now();
+            <div class="stream-section">
+                <div class="stream-title">
+                    <h2>// BROWSING NEWS CHANNELS //</h2>
+                    <div class="users-badge">
+                        <span>434 users are reading the signal</span>
+                    </div>
+                </div>
 
-      function tick(now) {
-        const elapsed = now - startTime;
-        const progress = Math.min(100, Math.round((elapsed / durationMs) * 100));
+                <div class="cards-grid">
+                    <div class="stream-card">
+                        <div class="card-thumb">
+                            <img src="https://iili.io/KOce6qG.png" alt="VIP Sports">
+                        </div>
+                        <div class="card-details">
+                            <h3>VIP SPORT</h3>
+                            <div class="card-stat">
+                                <span>AI Precision</span>
+                                <span class="stat-val">99.8%</span>
+                            </div>
+                        </div>
+                    </div>
 
-        if (percentEl) percentEl.textContent = `${progress}%`;
-        if (barEl) barEl.style.width = `${progress}%`;
+                    <div class="stream-card">
+                        <div class="card-thumb">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqBdX8SuaC1Ws7ZYuCVQstQ4qRi9A_3SWujg&s" alt="Aviator">
+                            <div class="tag-hot">ЭРТЭЙ</div>
+                        </div>
+                        <div class="card-details">
+                            <h3>Aviator Hack</h3>
+                            <div class="card-stat">
+                                <span>Success rate</span>
+                                <span class="stat-val">94.2%</span>
+                            </div>
+                        </div>
+                    </div>
 
-        if (statusEl) {
-          if (progress < 40) statusEl.textContent = "Connecting to Mumbai central server...";
-          else if (progress < 80) statusEl.textContent = "Synchronizing live signal node...";
-          else statusEl.textContent = "Decrypting feed stream...";
-        }
+                    <div class="stream-card">
+                        <div class="card-thumb">
+                            <img src="https://rotativka.com/en/wp-content/uploads/sites/3/2021/06/Mines-Demo.jpg" alt="Mines">
+                            <div class="tag-stable">STABLE</div>
+                        </div>
+                        <div class="card-details">
+                            <h3>Mines Hack/h3>
+                            <div class="card-stat">
+                                <span>АSuccess rate</span>
+                                <span class="stat-val">97.0%</span>
+                            </div>
+                        </div>
+                    </div>
 
-        if (progress < 100) {
-          requestAnimationFrame(tick);
+                    <div class="stream-card">
+                        <div class="card-thumb">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThYP5CGxc52hWd4ToMHI8MIJhun5BEjHh5LQ&s" alt="Penalty">
+                        </div>
+                        <div class="card-details">
+                            <h3>Penalty Shoot</h3>
+                            <div class="card-stat">
+                                <span>Gols index</span>
+                                <span class="stat-val">89.5%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Консоль -->
+                <div class="console-wrapper">
+                    <div class="console-head">
+                        <span>SYSTEM CONSOLE // CENTRAL_CORE_Mumbai</span>
+                        <span class="status-online">CONNECTED</span>
+                    </div>
+                    <div id="console-output" class="console-body"></div>
+                </div>
+            </div>
+
+            <!-- Отзывы -->
+            <section class="reviews-wrapper">
+                <h3>User Reviews</h3>
+                <div class="reviews-list">
+                    <div class="review-card">
+                        "Finally managed to catch a 15x signal on Aviator! My 125rs quickly grew into 30090rs. Thanks a lot, guys!!"
+                        <div class="review-user">- BatErdene_UB_92</div>
+                    </div>
+                    <div class="review-card">
+                        "Although I was skeptical at first, the Mines hack actually works. It identifies safe zones with 100% accuracy."
+                        <div class="review-user">- Temuulen_MN</div>
+                    </div>
+                    <div class="review-card">
+                        "I made 214000rs over the weekend using the 'Penalty' signal. You definitely have to try it!"
+                        <div class="review-user">- Ganzo_HacksX</div>
+                    </div>
+                </div>
+            </section>
+
+            <footer>
+                <div>Сsystem version: v3.4.1 (India Stable)</div>
+                <div>All information is protected by RSA-2048 encryption.</div>
+                <div>For educational purposes only. Please use responsibly..</div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Модальное окно (Инструкция) -->
+    <div id="access-modal" class="modal-overlay">
+        <div class="modal-box">
+            <button id="close-modal" class="modal-close">&times;</button>
+            <div class="modal-tag">PAYMENT REQUIRED</div>
+            <h2>ACCESS BY TRACKING THE FILE</h2>
+            <div class="modal-timer-sub">
+                Expiration Date: <span class="timer-display">04:59</span>
+            </div>
+
+            <div class="modal-steps">
+                <div class="step-item">
+                    <div class="step-badge">1</div>
+                    <div>
+                        <p><strong>Register an official address</strong></p>
+                        <p>Only accounts registered via the link below will be connected to the system..</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-badge">2</div>
+                    <div>
+                        <p><strong>Top up at least 200rs</strong></p>
+                        <p>A new recharge is required to align with the system's algorithm.</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-badge">3</div>
+                    <div>
+                        <p><strong>Activate predictors</strong></p>
+                        <p>Contact the admin and send your 1xBet ID to receive an activation code.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Кнопки ссылок -->
+            <div class="modal-actions">
+                <a href="https://refpa83698.com/L?tag=d_6308551m_2895c_&site=6308551&ad=2895&r=registration" target="_blank" class="btn-main">1. REGISTER EXAMPLE LOG IN</a>
+                <a href="t.me/RajeshKumar_officiaI_bot" target="_blank" class="btn-sub">2. CONNECT WITH THE BOT</a>
+                <a href="https://t.me/+HiZ14tyyhxo2NmVi" target="_blank" class="btn-tg">JOIN THE GROUP</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript логика -->
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. ТАЙМЕР
+      let timeInSeconds = 300;
+      const timerElement = document.getElementById("timer");
+      const modalTimer = document.querySelector(".timer-display");
+
+      function updateTimer() {
+        const minutes = Math.floor(timeInSeconds / 60);
+        const seconds = timeInSeconds % 60;
+        const formatted = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+        if (timerElement) timerElement.textContent = formatted;
+        if (modalTimer) modalTimer.textContent = formatted;
+
+        if (timeInSeconds > 0) {
+          timeInSeconds--;
         } else {
+          timeInSeconds = 300;
+        }
+      }
+      setInterval(updateTimer, 1000);
+      updateTimer();
+
+      // 2. ЗАГРУЗКА
+      const scanningScreen = document.getElementById("scanning-screen");
+      const percentText = document.getElementById("scan-percent");
+      let progress = 0;
+
+      const scanInterval = setInterval(() => {
+        progress += Math.floor(Math.random() * 8) + 3;
+        if (progress >= 100) {
+          progress = 100;
+          if (percentText) percentText.textContent = "100%";
+          clearInterval(scanInterval);
+
           setTimeout(() => {
-            if (overlayEl) overlayEl.classList.add("hidden");
-            if (typeof onComplete === "function") onComplete();
-          }, 250);
+            if (scanningScreen) {
+              scanningScreen.style.opacity = "0";
+              setTimeout(() => { scanningScreen.style.display = "none"; }, 500);
+            }
+          }, 400);
+        } else {
+          if (percentText) percentText.textContent = `${progress}%`;
+        }
+      }, 120);
+
+      // 3. ВЫИГРЫШИ (MNT)
+      const tickerBox = document.getElementById("payout-ticker");
+      const tickerText = document.getElementById("ticker-text");
+
+      const mnUsers = [
+        "Bat_Erdene99", "Ganbaatar_MNG", "Temuulen_Bet", "Batzorig_Win", 
+        "Khulan_VIP", "Narantuya_88", "Altangerel_01", "Bolormaa_Slot"
+      ];
+      const games = ["Aviator", "Mines", "Penalty Shootout", "Slots"];
+
+      function triggerRandomPayout() {
+        const user = mnUsers[Math.floor(Math.random() * mnUsers.length)];
+        const game = games[Math.floor(Math.random() * games.length)];
+        const amount = (Math.floor(Math.random() * 800) + 50) * 1000;
+
+        if (tickerText && tickerBox) {
+            tickerText.innerHTML = `<b>${user}</b> ${game} дээр ₮ ${amount.toLocaleString()} хожлоо`;
+            tickerBox.style.display = "flex";
+            tickerBox.style.opacity = "1";
+
+            setTimeout(() => {
+              tickerBox.style.opacity = "0";
+              setTimeout(() => { tickerBox.style.display = "none"; }, 500);
+            }, 4500);
         }
       }
-      requestAnimationFrame(tick);
-    }
+      setInterval(triggerRandomPayout, 8000);
 
-    function createCountdownTimer(elementId, totalSeconds, onExpire = null) {
-      let remaining = totalSeconds;
-      const el = document.getElementById(elementId);
+      // 4. КОНСОЛЬ
+      const consoleOutput = document.getElementById("console-output");
+      const logs = [
+        "[OK] AI SYSTEM ACTIVATION...",
+        "[OK] 1XBET CONNECTING TO SERVER...",
+        "[OK] CONNECTED TO THE CENTRAL SERVER IN MUMBAI...",
+        "[OK] RECEIVING MNT WINNING INFORMATION...",
+        "[SYS] SYSTEM SETTINGS ARE BEING LOADED...",
+        "[OK] CONNECTION ESTABLISHING (ХУРД 42ms)"
+      ];
 
-      function formatTime(sec) {
-        const mins = Math.floor(sec / 60);
-        const secs = sec % 60;
-        return `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
-      }
-
-      if (el) el.textContent = formatTime(remaining);
-
-      const intervalId = setInterval(() => {
-        remaining -= 1;
-        if (remaining <= 0) {
-          remaining = 0;
-          if (el) el.textContent = formatTime(remaining);
-          clearInterval(intervalId);
-          if (typeof onExpire === "function") onExpire();
-          return;
+      let logIndex = 0;
+      function addConsoleLog() {
+        if (consoleOutput) {
+            if (logIndex < logs.length) {
+              const line = document.createElement("div");
+              line.textContent = logs[logIndex];
+              consoleOutput.appendChild(line);
+              consoleOutput.scrollTop = consoleOutput.scrollHeight;
+              logIndex++;
+            } else {
+              logIndex = 0;
+              consoleOutput.innerHTML = "";
+            }
         }
-        if (el) el.textContent = formatTime(remaining);
-      }, 1000);
+      }
+      setInterval(addConsoleLog, 2200);
 
-      return () => clearInterval(intervalId);
-    }
-
-    const MOCK_USERS = ["Bat_Erdene99", "Temuulen_MN", "Ganzo_X", "Nomin_UB", "Tsolmon_77", "Sukhbat_MN"];
-    const MOCK_GAMES = ["Aviator", "Mines", "Penalty Shoot", "VIP Sports"];
-
-    function randomInt(min, max) {
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-
-    function formatMNT(amount) {
-      return `₮ ${amount.toLocaleString("en-US")}`;
-    }
-
-    function showLiveWinToast(containerId = "toast-container") {
-      const container = document.getElementById(containerId);
-      if (!container) return;
-
-      const user = MOCK_USERS[randomInt(0, MOCK_USERS.length - 1)];
-      const game = MOCK_GAMES[randomInt(0, MOCK_GAMES.length - 1)];
-      const payout = randomInt(250, 2500) * 1000;
-
-      const toast = document.createElement("div");
-      toast.className = "win-toast";
-      toast.innerHTML = `
-        <div><strong>Live Earnings Recorded</strong></div>
-        <div>${user} won ${formatMNT(payout)} on ${game}</div>
-      `;
-
-      container.appendChild(toast);
-
-      setTimeout(() => {
-        toast.classList.add("fade-out");
-        setTimeout(() => toast.remove(), 350);
-      }, 4200);
-    }
-
-    function startLiveWinsFeed(intervalMs = 6500) {
-      showLiveWinToast();
-      return setInterval(() => showLiveWinToast(), intervalMs);
-    }
-
-    function appendConsoleLog(message, tag = "INFO") {
-      const consoleEl = document.getElementById("system-console");
-      if (!consoleEl) return;
-
-      const now = new Date().toTimeString().split(" ")[0];
-      const line = document.createElement("div");
-      line.textContent = `[${now}] [${tag}] ${message}`;
-      consoleEl.appendChild(line);
-      consoleEl.scrollTop = consoleEl.scrollHeight;
-    }
-
-    function initSignalChannels() {
-      const cards = document.querySelectorAll("[data-channel]");
-      const viewersEl = document.getElementById("active-viewers");
+      // 5. МОДАЛЬНОЕ ОКНО
+      const cards = document.querySelectorAll(".stream-card");
+      const modal = document.getElementById("access-modal");
+      const closeModal = document.getElementById("close-modal");
 
       cards.forEach((card) => {
         card.addEventListener("click", () => {
-          cards.forEach((c) => c.classList.remove("active"));
-          card.classList.add("active");
-
-          const channelName = card.dataset.channel || "Signal Channel";
-          const confidence = card.dataset.confidence || "95.0%";
-
-          if (viewersEl) {
-            viewersEl.textContent = `${randomInt(320, 540)} users reading signals`;
-          }
-
-          appendConsoleLog(`Switched stream to "${channelName}" (Accuracy/Index: ${confidence})`, "STREAM");
+          if (modal) modal.style.display = "flex";
         });
       });
-    }
 
-    document.addEventListener("DOMContentLoaded", () => {
-      initSignalChannels();
-      startServerLoader(2200, () => {
-        appendConsoleLog("Connected to CENTRAL_CORE_MUMBAI (42ms)", "NET");
-        appendConsoleLog("RSA-2048 channel handshake verified", "SEC");
-        startLiveWinsFeed(7000);
-      });
-      createCountdownTimer("free-access-timer", 300, () => {
-        appendConsoleLog("Free access session window expired", "WARN");
-      });
-      createCountdownTimer("unlock-timer", 299);
+      if (closeModal) {
+        closeModal.addEventListener("click", () => {
+          if (modal) modal.style.display = "none";
+        });
+      }
     });
-  </script>
+    </script>
 </body>
 </html>
